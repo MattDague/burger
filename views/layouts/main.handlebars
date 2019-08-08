@@ -2,50 +2,12 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-		<link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
 		<title>EAT DA BURGER</title>
 		<script src="https://code.jquery.com/jquery.js"></script>
-        <link rel="stylesheet" href="../../public/assets/css/burger_style.css"><script>
-        
-$(function() {
-    $(".uneaten").on("click", function(event) {
-      var id = $(this).data("id");
-      var devour = $(this).data("devour");
-  
-      var eatStatus = {
-        devoured: true
-      };
-      $.ajax("/api/burgers/" + id, {
-        type: "PUT",
-        data: eatStatus
-      }).then(
-        function() {
-          console.log("ate burger", devour);
-          location.reload();
-        }
-      );
-    });
-  
-    $(".add-burger").on("submit", function(event){
-        console.log("new burger added");
-        event.preventDefault();
-        var newBurger = {
-            burger_name: $("#burgerAdd").val().trim(),
-        }
-        console.log("new burger added");
-        $.ajax("/api/burgers", {
-            type: "POST",
-            data: newBurger
-        }).then(
-            function(){
-                console.log("new burger added");
-                location.reload();
-            }
-        )
-    });
+        <link rel="stylesheet" href="/assets/css/burger_style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <script type="text/javascript" src="/assets/js/burgerJava.js"></script>
 
-  });
-  </script>
 	</head>
 	<body>
 		{{{ body }}}
