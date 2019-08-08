@@ -1,19 +1,19 @@
+// requirements and defining variables
 var express = require("express");
-
 var router = express.Router();
-
 var burger = require("../models/burger.js")
 
+//call for main page load
 router.get("/", function (req, res) {
     burger.all(function (data) {
         var hbsObject = {
             burgers: data
         };
-        console.log(hbsObject);
         res.render("index", hbsObject);
     });
 });
 
+//post for adding burgers
 router.post("/api/burgers", function (req, res) {
     burger.insert([
         "burger_name"
@@ -24,16 +24,13 @@ router.post("/api/burgers", function (req, res) {
         });
 });
 
+//updates for burgers, sets status to devoured
 router.put("/api/burgers/:id", function (req, res) {
-    var condition = "id = " + req.params.id;
-
-    console.log("condition", condition);
-
+    var eatStatus = "id = " + req.params.id;
     burger.update({
         devoured: true
-    }, condition, function (result) {
+    }, eatStatus, function (result) {
         if (result.changedRows == 0) {
-           
             return res.status(404).end();
         } else {
             res.status(200).end();

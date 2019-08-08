@@ -1,54 +1,56 @@
+{{!-- containe for heading --}}
 <div class="container">
-<div class="jumbotron bg-warning">
-  <h1 class=" container text-center text-dark">EAT DA BURGER</h1>
+    <div class="jumbotron bg-warning">
+        <h1 class=" container text-center text-dark">EAT DA BURGER</h1>
 
-</div>
+    </div>
 </div>
 
+b
 <div class="container">
     <div class="row">
         <div class="col-5 text-center border border-dark bg-light">
             <h2 class="m-2">Burgers waiting to be eaten!</h2>
-                {{#each burgers}}
-                {{#unless devoured}}
-               
-                    <br><h3>{{burger_name}}</h3>
-                    <button class="uneaten btn btn-danger" data-id="{{id}}" data-devoured="{{devour}}">
-                        EAT DA BURGER
-                    </button>
-                <br>
-                {{/unless}}
-                {{/each}}
-           <br>
+            {{!-- for every burgers check if its been eating, if not place in this column --}}
+            {{#each burgers}}
+            {{#unless devoured}}
+
+            <br>
+            <h3>{{burger_name}}</h3>
+            <button class="uneaten btn btn-danger" data-id="{{id}}" data-devoured="{{devour}}">
+                EAT DA BURGER
+            </button>
+            <br>
+            {{/unless}}
+            {{/each}}
+            <br>
         </div>
         <div class="col-2"></div>
         <div class="col-5 text-center burgerHolder border border-dark bg-light">
             <h2 class="m-2">Burgers that got eaten!!</h2>
+            {{!-- for every buger that is devoured, it will be placed in this column --}}
+            {{#each burgers}}
+            {{#if devoured}}
+            <br>
+            <h3 class="text-muted"><s>{{burger_name}}</s></h3>
+            {{/if}}
+            {{/each}}
 
-                
-                {{#each burgers}}
-                {{#if devoured}}
-                <br>
-                <h3 class="text-muted"><s>{{burger_name}}</s></h3>
-                {{/if}}
-                {{/each}}
-           
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col-2"></div>
-<div class="container col-8 text-center my-5 border border-dark bg-light">
-    <h2 class="mt-3">Add a burger</h2>
-    <form class="add-burger">
-
-        <div class="form-group">
-            <label for="burgerAdd">Insert burger name here:</label>
-            <input type="text" id="burgerAdd" name="name">
-        </div>
-
-        <button class="btn btn-warning mb-3" type="submit">Add that burger yo!</button>
-    </form>
-</div >
-<div class="col-2"></div>
+    <div class="container col-8 text-center my-5 border border-dark bg-light">
+        <h2 class="mt-3">Add a burger</h2>
+        {{!-- form for adding new burger info, this is grabbed by the bugerJava.js file --}}
+        <form class="add-burger">
+            <div class="form-group">
+                <label for="burgerAdd">Insert burger name here:</label>
+                <input type="text" id="burgerAdd" name="name">
+            </div>
+            <button class="btn btn-warning mb-3" type="submit">Add that burger yo!</button>
+        </form>
+    </div>
+    <div class="col-2"></div>
 </div>

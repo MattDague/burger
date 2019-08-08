@@ -3,8 +3,10 @@ var pw = require("../keys");
 var mysql = require("mysql");
 var connection
 
+//conection to jawsdb
 if (process.env.JAWSDB_URL){
     connection = mysql.createConnection(process.env.JAWSDB_URL);
+    //if jaws db connection fails go to mysql
 } else {
   connection = mysql.createConnection({
   host: "localhost",
