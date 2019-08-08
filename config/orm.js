@@ -1,6 +1,5 @@
 var connection = require("./connection.js");
 
-var connection = require("../config/connection.js");
 // function for adding question mark to query 
 function printQuestionMarks(num) {
   var arr = [];
@@ -63,7 +62,6 @@ var orm = {
     queryString += " WHERE ";
     queryString += eatStatus;
 
-    console.log(queryString);
     connection.query(queryString, function (err, result) {
       if (err) {
         throw err;
