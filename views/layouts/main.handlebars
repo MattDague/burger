@@ -5,7 +5,47 @@
 		<link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
 		<title>EAT DA BURGER</title>
 		<script src="https://code.jquery.com/jquery.js"></script>
-		{{!-- <script src="/assets/js/.js"></script> --}}
+        <link rel="stylesheet" href="../../public/assets/css/burger_style.css"><script>
+        
+$(function() {
+    $(".uneaten").on("click", function(event) {
+      var id = $(this).data("id");
+      var devour = $(this).data("devour");
+  
+      var eatStatus = {
+        devoured: true
+      };
+      $.ajax("/api/burgers/" + id, {
+        type: "PUT",
+        data: eatStatus
+      }).then(
+        function() {
+          console.log("ate burger", devour);
+          location.reload();
+        }
+      );
+    });
+  
+    $(".add-burger").on("submit", function(event){
+        console.log("new burger added");
+        event.preventDefault();
+        var newBurger = {
+            burger_name: $("#burgerAdd").val().trim(),
+        }
+        console.log("new burger added");
+        $.ajax("/api/burgers", {
+            type: "POST",
+            data: newBurger
+        }).then(
+            function(){
+                console.log("new burger added");
+                location.reload();
+            }
+        )
+    });
+
+  });
+  </script>
 	</head>
 	<body>
 		{{{ body }}}
