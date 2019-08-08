@@ -1,4 +1,5 @@
-var pw = require("./keys.js");
+require("dotenv").config();
+var pw = require("../keys");
 var mysql = require("mysql");
 var connection
 
@@ -10,7 +11,7 @@ if (process.env.JAWSDB_URL){
   port: 3306,
   user: "root",
   password: pw.sql.password,
-  database: "burger_db"
+  database: "burgers_db"
 });
 }
 
