@@ -1,4 +1,10 @@
 body {
-    background-color: cadetblue;
+    background-image: url("../img/burger_buns_cutlets_sauce_fast_food_114115_1920x1080.jpg");
+    background-size: cover;
     
+}
+
+.burgerHolder {
+    
+    background-color: blanchedalmond;
 }
